@@ -9,7 +9,7 @@ require_relative 'urban_dictionary/word'
 
 module UrbanDictionary
   DEFINE_URL = 'http://www.urbandictionary.com/define.php'
-  RANDOM_URL = 'http://www.urbandictionary.com/random.php'
+  RANDOM_URL = 'http://www.urbandictionary.com/random.php?page=65'
 
   def self.define(str)
     Word.from_url("#{DEFINE_URL}?term=#{URI.encode(str)}")
