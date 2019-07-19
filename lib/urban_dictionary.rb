@@ -9,20 +9,21 @@ require_relative 'urban_dictionary/word'
 
 module UrbanDictionary
   DEFINE_URL = 'http://www.urbandictionary.com/define.php'
-  RANDOM_URL = 'http://www.urbandictionary.com/random.php?page=65'
+  RANDOM_URL = 'http://www.urbandictionary.com/random.php'
 
   def self.define(str)
     Word.from_url("#{DEFINE_URL}?term=#{URI.encode(str)}")
   end
 
-  def self.random_word
-    url = URI.parse(RANDOM_URL)
-    req = Net::HTTP::Get.new(url.path)
-    rsp = Net::HTTP.start(url.host, url.port) do |http|
-      http.request(req)
-    end
+  def self.random_word(str)
+    #url = URI.parse(RANDOM_URL)
+    #req = Net::HTTP::Get.new(url.path)
+    #rsp = Net::HTTP.start(url.host, url.port) do |http|
+    #  http.request(req)
+    #end
 
-    Word.from_url(rsp['location'])
+    #Word.from_url(rsp['location'])
+    Word.from_url("#{RANDOM_URL}?page=#{URI.encode(str)}")
   end
 end
 
